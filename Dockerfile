@@ -40,5 +40,5 @@ RUN \
 COPY etc/ /etc/
 COPY bin/ /usr/local/bin/
 
-WORKDIR /var/www
+WORKDIR /var/www/project
 ENTRYPOINT /bin/bash /usr/local/bin/entry.sh
