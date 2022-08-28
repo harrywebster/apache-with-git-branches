@@ -5,9 +5,12 @@ The `apache-with-git-branches` project is a template to allow developers working
 ## Prerequisites
 
 - Docker will need to be installed.
-- You'll to configure your DNS (ZONE file), if your website is `my-project.com`, I would have an A record for `*.sample.testcode.work` pointing to `127.0.0.1` which is my workstation.
+- You may wish to configure your DNS (ZONE file), if your website is `my-project.com`, I would have an A record for `*.dev.my-project.com` pointing to `127.0.0.1` or if you want others to be able to see your work on the same network `*.harry.my-project.com` resolving to your internal IP address (eg `192.168.1.x`).
 
-If you don't have a domain, you can do it yourself in your hosts file, simply add `127.0.0.1 1234-fix-broken-contact-form.sample.testcode.work 1235-fix-broken-another-form.harry.my-project.com` and so on to your `/etc/hosts` file in Linux or OSx and for Windows in `c:\Windows\System32\Drivers\etc\hosts` - read more on how to do this [here](https://docs.rackspace.com/support/how-to/modify-your-hosts-file).
+If you don't have a domain yet, or in the case of proof-of-concept projects never will, you can use `branch-name.localhost.testmy.cloud`... `ANYTHING.localhost.testmy.cloud` will resolve to localhost (yourself).
+
+NB: if you're using your own domain, you will need to update the domain in `etc/apache2/sites-enabled/000-default.conf` and `app/public/index.php`
+
 
 ## HOWTO
 

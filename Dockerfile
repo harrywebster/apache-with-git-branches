@@ -3,10 +3,10 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PHP_VERSION 8.1
 
 # Ensure this version of Ubuntu is fully up to date
-RUN apt-get update && apt-get -y dist-upgrade && apt-get -y install software-properties-common
+RUN apt-get update && apt-get -y dist-upgrade
 
 # Base packages
-RUN apt -y install ca-certificates less vim
+RUN apt -y install ca-certificates
 
 # Apache2 packages
 RUN apt -y install apache2 apache2-utils libapache2-mod-apreq2 libapache2-mod-php${PHP_VERSION}
@@ -24,6 +24,9 @@ RUN \
 	a2enmod rewrite && \
 	a2enmod vhost_alias
 
+# Disable insecure mods
+RUN a2dismod status
+
 # Enable ports for Apache
 RUN \
 	> /etc/apache2/ports.conf && \
@@ -33,6 +36,7 @@ RUN \
 
 ## PHP Composer
 RUN \
+	cd /var/www && \
 	curl --silent --show-error https://getcomposer.org/installer | php && \
 	php${PHP_VERSION} composer.phar require
 
