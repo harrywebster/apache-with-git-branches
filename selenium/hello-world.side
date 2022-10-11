@@ -1,0 +1,39 @@
+{
+  "id": "117cd844-789a-45db-8f9d-1e4817d04a83",
+  "version": "2.0",
+  "name": "hello-world",
+  "url": "http://10.0.0.37/",
+  "tests": [{
+    "id": "5d165176-c4a6-419c-9844-be1030b144b6",
+    "name": "helloworld",
+    "commands": [{
+      "id": "6fe01b93-94c3-4464-af79-4a9eebf5b404",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b6d4153e-fa92-4a3c-85f0-b53539c2c836",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=p",
+      "targets": [
+        ["css=p", "css:finder"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'I am branch main')]", "xpath:innerText"]
+      ],
+      "value": "I am branch main"
+    }]
+  }],
+  "suites": [{
+    "id": "b8a74b5a-c442-4299-8b15-c40619785bd4",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["5d165176-c4a6-419c-9844-be1030b144b6"]
+  }],
+  "urls": ["/"],
+  "plugins": []
+}

@@ -40,6 +40,14 @@ RUN \
 	curl --silent --show-error https://getcomposer.org/installer | php && \
 	php${PHP_VERSION} composer.phar require
 
+# Install CI/CD testing platform (NodeJS >= v10 required, lets use 16)
+RUN \
+	curl -s https://deb.nodesource.com/setup_16.x | bash && \
+	apt install nodejs -y
+RUN \
+	npm install -g selenium-side-runner && \
+	npm install -g chromedriver
+
 # Copy local files
 COPY etc/ /etc/
 COPY bin/ /usr/local/bin/

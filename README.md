@@ -33,3 +33,16 @@ docker run -dit --rm -h test --name test -p 80:80 -p 443:443 -v c:/Users/me/Apps
 ```
 
 ... and to attach/debug/monitor run `docker exec -it test /bin/bash`.
+
+## CI/CD testing
+
+Start the web-browser used to test the website:
+```
+docker pull selenium/standalone-chrome
+docker run --rm -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome
+```
+
+Run the sample test:
+```
+docker exec -it test selenium-side-runner --server http://10.0.0.37:4444/wd/hub ./main/selenium/*.side
+```
